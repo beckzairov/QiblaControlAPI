@@ -58,8 +58,15 @@ class UserController extends Controller
         $role = $request->role ?? 'Specialist';
         $user->assignRole($role);
 
-        return response()->json(['message' => 'User registered successfully with role!'], 201);
+        // Generate a token for the newly registered user
+        $token = $user->createToken('authToken')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ], 201);
     }
+
 
 
     // Login an Existing User
@@ -76,11 +83,16 @@ class UserController extends Controller
             // Create a new token for the current session
             $token = $user->createToken('authToken')->plainTextToken;
 
-            return response()->json(['token' => $token], 200);
+            // Return user details along with the token
+            return response()->json([
+                'token' => $token,
+                'user' => $user,
+            ], 200);
         }
 
         return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
 
 
     public function user(){
