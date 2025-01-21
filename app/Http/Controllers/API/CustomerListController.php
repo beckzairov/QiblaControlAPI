@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Agreement;
+use App\Models\CustomerList;
 use Illuminate\Http\Request;
 
-class AgreementController extends Controller
+class CustomerListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class AgreementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Agreement $agreement)
+    public function show(CustomerList $customerList)
     {
         //
     }
@@ -43,7 +43,7 @@ class AgreementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Agreement $agreement)
+    public function edit(CustomerList $customerList)
     {
         //
     }
@@ -51,7 +51,7 @@ class AgreementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agreement $agreement)
+    public function update(Request $request, CustomerList $customerList)
     {
         //
     }
@@ -59,7 +59,7 @@ class AgreementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Agreement $agreement)
+    public function destroy(CustomerList $customerList)
     {
         //
     }
