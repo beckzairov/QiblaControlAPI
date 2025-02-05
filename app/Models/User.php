@@ -27,4 +27,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Scope a query to filter users by specific roles.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForRoles($query, array $roles)
+    {
+        return $query->with("roles")->whereHas("roles", function($q) use ($roles) {
+            $q->whereIn("name", $roles);
+        });
+    }
 }

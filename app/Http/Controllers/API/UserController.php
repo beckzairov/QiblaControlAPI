@@ -95,8 +95,13 @@ class UserController extends Controller
 
 
 
-    public function user(){
-        return auth()->user();
+    public function users(){
+        $users = User::forRoles(['Admin', 'Manager', 'Sale Operator'])->get();
+        return response()->json($users);
+    }
+
+    public function me(){
+        return auth()->user()->load('roles');
     }
 
 

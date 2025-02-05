@@ -25,7 +25,7 @@ class AgreementResource extends JsonResource
             'phone_numbers' => $this->phone_numbers,
             'previous_agreement_taken_away' => $this->previous_agreement_taken_away,
             'comments' => $this->comments,
-            'responsible_user' => $this->whenLoaded('responsibleUser'),
+            'responsible_user_id' => $this->whenLoaded('responsibleUser'),
             'created_by_id' => $this->whenLoaded('creator'),
             'customer_lists' => $this->whenLoaded('customerLists'),
             'created_at' => $this->created_at->toDateTimeString(),

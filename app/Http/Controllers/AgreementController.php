@@ -27,6 +27,8 @@ class AgreementController extends Controller
      */
     public function store(Request $request)
     {
+        // return response()->json(1);
+        // return response()->json($request->validate(['responsible_user_id' => 'required|exists:users,id']));
         $validated = $request->validate([
             'flight_date' => 'required|date',
             'duration_of_stay' => 'required|integer',
@@ -45,7 +47,6 @@ class AgreementController extends Controller
         ]);
         
         $flight_date = Carbon::createFromFormat('Y-m-d', $validated['flight_date'])->toDateTimeString();
-        
         $validated['flight_date'] = $flight_date;
         // Create a new agreement
         $agreement = Agreement::create([
